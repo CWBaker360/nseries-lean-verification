@@ -1,0 +1,7 @@
+# Dependency inspection before the integrated build
+
+All nine dependency working trees were copied with their Git metadata from the existing BakerTrisection environment, excluding only each dependency's generated `.lake` directory. `git status --porcelain=v1` on every copy returned no entries and exit code 0; HEAD matched the pinned revision in every case. The machine-readable result is dependency-audit.json.
+
+In the original location, Git could read HEAD and list its configuration but `git status` and `git diff` failed with `fatal: this operation must be run in a work tree`; `git -C` also reported permission denied. These failures persisted after read access was granted. The same source and Git metadata worked normally after copying into the permitted release directory. Consequently, the earlier Lake warnings cannot be treated as evidence of source edits. Inspection found no tracked changes in any copied dependency. Original working trees were neither reset nor edited.
+
+After this inspection, generated dependency `.lake` caches were copied separately. They are excluded from the source audit and release commit. The release project itself began with no `.lake/build` and no imported N-Series object files. LEAN_PATH was cleared before `lake build`. Thus the clean build means a fresh build of all release modules with the pinned dependencies' existing build caches, not a from-source rebuild of Lean or all of Mathlib.

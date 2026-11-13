@@ -1,0 +1,42 @@
+[
+  {
+    "module": "NSeriesE3ThreeScaleSharp",
+    "theorem": "abs_three_add_le",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE3ThreeScaleSharp",
+    "theorem": "nseries_remainder_le_base8",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE3ThreeScaleSharp",
+    "theorem": "three_scale_sharp_weights",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE3ThreeScaleSharp",
+    "theorem": "w_moment6",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE3ThreeScaleSharp",
+    "theorem": "three_scale_sharp",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE3ThreeScaleSharp",
+    "theorem": "dyadic_three_scale_sharp",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE9LagrangeWeights",
+    "theorem": "lagrange_weights_moments",
+    "statementUnchanged": true
+  },
+  {
+    "module": "NSeriesE9LagrangeWeights",
+    "theorem": "lagrange_weight_formula",
+    "statementUnchanged": true
+  }
+]

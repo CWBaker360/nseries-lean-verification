@@ -1,0 +1,16 @@
+nseries_sine_remainder_bound
+two_scale_general_bound
+richardson_error_bound
+acceleratedPi_eq_pi
+three_scale_error_bound
+three_scale_sharp
+dyadic_three_scale_sharp
+general_moment_cancellation
+moment_weights_unique
+nseries_weights_existsUnique
+lagrange_weights_moments
+lagrange_weight_formula
+chordHalf_trisection_unique
+polygonalPi_eq_pi
+intrinsic_two_scale_bound
+intrinsic_dyadic_three_scale_sharp

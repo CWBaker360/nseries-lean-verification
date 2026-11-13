@@ -1,0 +1,101 @@
+\section{Formal verification in Lean 4}
+\label{sec:lean}
+
+The results listed below have been formalized in Lean~4 with Mathlib.
+The integrated release contains 28 source modules and passed a clean project
+\texttt{lake build} with Lean~4.36.0-rc2 and Mathlib revision
+\texttt{9d581dfff2e41de989072ea63abf3daf69311520}.
+The dependency source trees were checked against the pinned manifest;
+existing dependency build caches were reused. All 112 named declarations in
+the integrated audit passed the stated axiom check. Sources, build records,
+and SHA-256 fingerprints are provided in the companion repository
+\url{https://github.com/CWBaker360/nseries-lean-verification}.
+The repository commit identifies the complete release snapshot.
+Table~\ref{tab:lean} lists the correspondence between the statements of this
+note and the Lean theorems.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}p{0.43\linewidth}p{0.51\linewidth}@{}}
+\toprule
+Statement & Lean theorem \\
+\midrule
+Lemma 2.2 (even-power expansion) & \texttt{nseries\_sine\_remainder\_bound} \\
+Theorem 3.1 (two-scale, general sequence) & \texttt{two\_scale\_general\_bound} \\
+Corollary 3.2 (polygonal two-scale) & \texttt{richardson\_error\_bound} \\
+Theorem 4.2 ($\pi_g^{(k)}=\pi$) & \texttt{acceleratedPi\_eq\_pi} \\
+Theorem 6.1 (polygonal specialization) & \texttt{three\_scale\_error\_bound}, \texttt{three\_scale\_sharp} \\
+Corollary 6.2 (analytic dyadic form) & \texttt{dyadic\_three\_scale\_sharp} \\
+Theorem 7.1 (moment cancellation) & \texttt{general\_moment\_cancellation} \\
+Remark 7.2 (uniqueness of weights) & \texttt{moment\_weights\_unique} \\
+Moment-weight existence & \texttt{nseries\_weights\_existsUnique} \\
+Explicit Lagrange weights & \texttt{lagrange\_weights\_moments}, \texttt{lagrange\_weight\_formula} \\
+Section 10 (trisection cubic) & \texttt{chordHalf\_trisection\_unique} \\
+Polygonal limit & \texttt{polygonalPi\_eq\_pi} \\
+Corollary 3.2 on intrinsic polygons & \texttt{intrinsic\_two\_scale\_bound} \\
+Corollary 6.2 on intrinsic polygons & \texttt{intrinsic\_dyadic\_three\_scale\_sharp} \\
+\bottomrule
+\end{tabular}
+\caption{Correspondence between this note and the Lean development.}
+\label{tab:lean}
+\end{table}
+
+The two named three-scale bounds in the table apply to the polygonal analytic sequence; the generic finite cancellation mechanism is covered by the explicit-hypothesis moment theorem.
+
+Four points of scope should be stated precisely.
+
+\emph{Explicit bounds.} The asymptotic statements are verified in
+explicit-constant form. For example, Lemma~2.2 is proved as
+\[
+\left|N\sin\frac{\pi}{N}
+-\Bigl(\pi-\frac{\pi^3}{6N^2}+\frac{\pi^5}{120N^4}-\frac{\pi^7}{5040N^6}\Bigr)\right|
+\le \frac{\pi^9}{362880\,N^8}
+\qquad (N>0),
+\]
+and the three-scale operator is shown to satisfy
+\[
+\widehat P_N^{(k,3)}=\pi-\frac{\pi^7}{5040\,k^6N^6}+O(N^{-8})
+\]
+with an explicit constant. Theorems~3.1 and~7.1 are formalized under an
+explicit remainder hypothesis $|q(M)-Q-\cdots|\le B/M^{p}$ rather than a
+big-$O$ hypothesis; the Lean statements are therefore quantitative versions
+of the theorems as stated here, not verbatim transcriptions.
+
+\emph{The polygonal limit.} The half-perimeter of the regular $n$-gon is
+defined in Lean without reference to $\pi$, as
+\[
+\frac{n}{2}\min_{\substack{z^n=1\\ z\ne 1}}|1-z| \qquad (n\ge 3),
+\]
+and the limit of this sequence is proved to equal $\pi$. The definition is
+$\pi$-free; the proof of the identification uses the classical constant.
+This is the raw polygonal limit, distinct from the accelerated limit
+$\pi_g^{(k)}$ of Definition~4.1, which is verified separately.
+The acceleration bounds are proved for the analytic sequence
+$N\sin(\pi/N)$, and the intrinsic half-perimeter is proved equal to that
+sequence for $n\ge 3$. Two of the bounds are also stated and verified
+directly for the intrinsic sequence: the two-scale bound of Corollary~3.2
+for integer $k\ge 2$, and the sharp dyadic three-scale bound of
+Corollary~6.2. The remaining bounds (the general-$k$ three-scale bound and
+the accelerated limit of Theorem~4.2) have not been restated for the
+intrinsic sequence.
+
+\emph{What is not verified.} The digit tables of Section~10, the
+$100{,}000$-digit agreement of the two implementations, and the observed
+growth of the number of correct digits with the number of levels are
+computational evidence, not formally verified theorems. For the trisection
+recurrence, Lean verifies the cubic identity and the uniqueness of its root
+in $[0,\tfrac12]$ for $N\ge 2$, not the numerical runs.
+
+\emph{Weights.} The Vandermonde formalization establishes existence and
+uniqueness of the moment weights at distinct nodes. Separately, the explicit
+Lagrange-basis weights
+\[
+w_i=\prod_{k\ne i}\frac{-x_k}{x_i-x_k}
+\]
+are proved to satisfy the moment system. These results certify each finite
+moment-cancellation system, not a uniform digit-growth rate as the number of
+levels increases.
+
+The reported endpoint axiom audits list only \texttt{propext}, \texttt{Classical.choice},
+and \texttt{Quot.sound}; no \texttt{sorry}, \texttt{admit}, or additional axioms were reported
+in the audited modules.

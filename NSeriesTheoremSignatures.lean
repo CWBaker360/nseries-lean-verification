@@ -1,0 +1,17 @@
+import NSeries
+#check BakerNSeries.nseries_sine_remainder_bound
+#check BakerNSeries.two_scale_general_bound
+#check BakerNSeries.richardson_error_bound
+#check BakerNSeries.acceleratedPi_eq_pi
+#check BakerNSeries.three_scale_error_bound
+#check BakerNSeries.three_scale_sharp
+#check BakerNSeries.dyadic_three_scale_sharp
+#check BakerNSeries.general_moment_cancellation
+#check BakerNSeries.moment_weights_unique
+#check BakerNSeries.nseries_weights_existsUnique
+#check BakerNSeries.lagrange_weights_moments
+#check BakerNSeries.lagrange_weight_formula
+#check BakerNSeries.chordHalf_trisection_unique
+#check BakerNSeries.polygonalPi_eq_pi
+#check BakerNSeries.intrinsic_two_scale_bound
+#check BakerNSeries.intrinsic_dyadic_three_scale_sharp

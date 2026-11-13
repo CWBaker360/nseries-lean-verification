@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "Please cite this software when using the N-Series Lean formal verification."
+title: "N-Series Lean Verification"
+type: software
+
+authors:
+  - family-names: "Baker"
+    given-names: "Wayne"
+
+version: "1.0.0"
+date-released: 2026-11-13
+
+repository-code: "https://github.com/CWBaker360/nseries-lean-verification"
+url: "https://github.com/CWBaker360/nseries-lean-verification"
+
+abstract: >-
+  Formal verification in Lean 4 and Mathlib of the N-Series
+  polygonal approximation to pi. The development establishes
+  polygon convergence, Richardson acceleration, explicit
+  error bounds, multiscale moment cancellation, Lagrange
+  interpolation weights, and geometric chord-trisection results.
+  The integrated release comprises 28 mathematical modules,
+  with 112 declarations included in the axiom audit.
+
+keywords:
+  - "Lean 4"
+  - "Mathlib"
+  - "formal verification"
+  - "N-Series"
+  - "polygonal approximation"
+  - "Richardson extrapolation"
+  - "moment cancellation"
+  - "geometric trisection"
+
+license: MIT

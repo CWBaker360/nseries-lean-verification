@@ -1,0 +1,48 @@
+BakerNSeries.nseries_sine_remainder_bound (N : ℝ) (hN : 0 < N) :
+  |N * Real.sin (Real.pi / N) -
+        (Real.pi - Real.pi ^ 3 / (6 * N ^ 2) + Real.pi ^ 5 / (120 * N ^ 4) - Real.pi ^ 7 / (5040 * N ^ 6))| ≤
+    Real.pi ^ 9 / (362880 * N ^ 8)
+BakerNSeries.two_scale_general_bound (q : ℝ → ℝ) (Q C B N k : ℝ) (hN : 0 < N) (hk : 1 < k)
+  (hq : ∀ (M : ℝ), 0 < M → |q M - Q - C / M ^ 2| ≤ B / M ^ 4) :
+  |(k ^ 2 * q (k * N) - q N) / (k ^ 2 - 1) - Q| ≤ (k ^ 2 * (B / (k * N) ^ 4) + B / N ^ 4) / (k ^ 2 - 1)
+BakerNSeries.richardson_error_bound (N k : ℝ) (hN : 1 ≤ N) (hk : 1 < k) :
+  |BakerNSeries.nseriesR N k - Real.pi + Real.pi ^ 5 / (120 * k ^ 2 * N ^ 4)| ≤ BakerNSeries.richardsonC k / N ^ 6
+BakerNSeries.acceleratedPi_eq_pi (k : ℝ) (hk : 1 < k) : BakerNSeries.acceleratedPi k = Real.pi
+BakerNSeries.three_scale_error_bound (N k : ℝ) (hN : 1 ≤ N) (hk : 1 < k) :
+  |BakerNSeries.nseriesR3 N k - Real.pi| ≤ BakerNSeries.threeScaleC k / N ^ 6
+BakerNSeries.three_scale_sharp (N k : ℝ) (hN : 0 < N) (hk : 1 < k) :
+  |BakerNSeries.nseriesR3 N k - Real.pi + Real.pi ^ 7 / (5040 * k ^ 6 * N ^ 6)| ≤
+    (|BakerNSeries.wa k| + |BakerNSeries.wb k| + |BakerNSeries.wc k|) * (Real.pi ^ 9 / 362880 / N ^ 8)
+BakerNSeries.dyadic_three_scale_sharp (N : ℝ) (hN : 0 < N) :
+  |1 / 45 * BakerNSeries.nseriesQ N - 4 / 9 * BakerNSeries.nseriesQ (2 * N) + 64 / 45 * BakerNSeries.nseriesQ (4 * N) -
+          Real.pi +
+        Real.pi ^ 7 / (322560 * N ^ 6)| ≤
+    17 / 9 * (Real.pi ^ 9 / 362880 / N ^ 8)
+BakerNSeries.general_moment_cancellation.{u_1} {ι : Type u_1} (s : Finset ι) (w m : ι → ℝ) (r : ℕ) (q : ℝ → ℝ)
+  (Q B N : ℝ) (C : ℕ → ℝ) (hN : 0 < N) (hm : ∀ i ∈ s, 0 < m i) (hw : ∑ i ∈ s, w i = 1)
+  (hmom : ∀ j ∈ Finset.range r, ∑ i ∈ s, w i / m i ^ (2 * (j + 1)) = 0)
+  (hq : ∀ (M : ℝ), 0 < M → |q M - Q - ∑ j ∈ Finset.range r, C j / M ^ (2 * (j + 1))| ≤ B / M ^ (2 * (r + 1))) :
+  |∑ i ∈ s, w i * q (m i * N) - Q| ≤ ∑ i ∈ s, |w i| * (B / (m i * N) ^ (2 * (r + 1)))
+BakerNSeries.moment_weights_unique {n : ℕ} (x : Fin n → ℝ) (hx : Function.Injective x) (w w' : Fin n → ℝ)
+  (h : ∀ (j : Fin n), ∑ i, w i * x i ^ ↑j = ∑ i, w' i * x i ^ ↑j) : w = w'
+BakerNSeries.nseries_weights_existsUnique {n : ℕ} (x : Fin n → ℝ) (hx : Function.Injective x) :
+  ∃! w, ∀ (j : Fin n), ∑ i, w i * x i ^ ↑j = if ↑j = 0 then 1 else 0
+BakerNSeries.lagrange_weights_moments {n : ℕ} (x : Fin n → ℝ) (hx : Function.Injective x) (j : ℕ) (hj : j < n) :
+  ∑ i, Polynomial.eval 0 (Lagrange.basis Finset.univ x i) * x i ^ j = 0 ^ j
+BakerNSeries.lagrange_weight_formula {n : ℕ} (x : Fin n → ℝ) (i : Fin n) :
+  Polynomial.eval 0 (Lagrange.basis Finset.univ x i) = ∏ k ∈ Finset.univ.erase i, -x k / (x i - x k)
+BakerNSeries.chordHalf_trisection_unique (N u : ℝ) (hN : 2 ≤ N) (hu0 : 0 ≤ u) (hu1 : u ≤ 1 / 2)
+  (hu : 4 * u ^ 3 - 3 * u + BakerNSeries.chordHalf N = 0) : u = BakerNSeries.chordHalf (3 * N)
+BakerNSeries.polygonalPi_eq_pi : BakerNSeries.polygonalPi = Real.pi
+BakerNSeries.intrinsic_two_scale_bound (n k : ℕ) (hn : 3 ≤ n) (hk : 2 ≤ k) :
+  |(↑k ^ 2 * BakerNSeries.intrinsicPolygonHalfPerimeter (k * n) - BakerNSeries.intrinsicPolygonHalfPerimeter n) /
+            (↑k ^ 2 - 1) -
+          Real.pi +
+        Real.pi ^ 5 / (120 * ↑k ^ 2 * ↑n ^ 4)| ≤
+    BakerNSeries.richardsonC ↑k / ↑n ^ 6
+BakerNSeries.intrinsic_dyadic_three_scale_sharp (n : ℕ) (hn : 3 ≤ n) :
+  |1 / 45 * BakerNSeries.intrinsicPolygonHalfPerimeter n - 4 / 9 * BakerNSeries.intrinsicPolygonHalfPerimeter (2 * n) +
+            64 / 45 * BakerNSeries.intrinsicPolygonHalfPerimeter (4 * n) -
+          Real.pi +
+        Real.pi ^ 7 / (322560 * ↑n ^ 6)| ≤
+    17 / 9 * (Real.pi ^ 9 / 362880 / ↑n ^ 8)
