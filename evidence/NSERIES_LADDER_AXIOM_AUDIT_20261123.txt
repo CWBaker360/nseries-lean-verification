@@ -1,0 +1,5 @@
+'BakerNSeries.canonical_ladder_certified_both' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BakerNSeries.canonical_residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BakerNSeries.canonical_tableau_certified' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BakerNSeries.canonical_tableau_vs_pi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BakerNSeries.canonical_tableau_vs_pi_manuscript' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,6 @@
+import NSeriesCanonicalTableau
+#print axioms BakerNSeries.canonical_ladder_certified_both
+#print axioms BakerNSeries.canonical_residual_bounds
+#print axioms BakerNSeries.canonical_tableau_certified
+#print axioms BakerNSeries.canonical_tableau_vs_pi
+#print axioms BakerNSeries.canonical_tableau_vs_pi_manuscript

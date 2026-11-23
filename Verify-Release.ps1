@@ -37,4 +37,13 @@ foreach ($report in $reports) {
     if ($axiom -notin @('propext','Classical.choice','Quot.sound')) { throw ('Unexpected axiom: ' + $axiom) }
   }
 }
+& lake env lean NSeriesLadderAudit.lean 2>&1 | Tee-Object -FilePath evidence/ladder-axiom-reproduction.log
+if ($LASTEXITCODE -ne 0) { throw "Ladder axiom audit failed" }
+$ladderLog = Get-Content -Raw evidence/ladder-axiom-reproduction.log
+$ladderExpected = @(Get-Content NSeriesLadderAudit.lean | Where-Object { $_ -match "^#print axioms " }).Count
+$ladderReports = [regex]::Matches($ladderLog, "depends on axioms: \[([^\]]*)\]")
+if ($ladderExpected -ne 5 -or $ladderReports.Count -ne $ladderExpected) { throw "Ladder audit report count mismatch" }
+if ($ladderLog -match "sorryAx") { throw "Ladder uses sorryAx" }
+foreach ($entry in $ladderReports) { foreach ($axiom in ($entry.Groups[1].Value -split ",\s*")) { if ($axiom -notin @("propext","Classical.choice","Quot.sound")) { throw "Unexpected Ladder axiom: $axiom" } } }
+Write-Output "PASS: five Ladder certificate audits."
 Write-Output "PASS: full build and $expected declaration audits."

@@ -9,7 +9,7 @@ rev = "9d581dfff2e41de989072ea63abf3daf69311520"
 
 [[lean_lib]]
 name = "NSeries"
-roots = ["NSeries", "NSeriesAlgebra", "NSeriesB5ActualBound", "NSeriesB6", "NSeriesC2Final", "NSeriesD1", "NSeriesD2BChord", "NSeriesD2BClosing", "NSeriesD2BPrimitive", "NSeriesD2Geometry", "NSeriesD3ChordComparison", "NSeriesD3ChordPowers", "NSeriesD3Foundation", "NSeriesD3Limit", "NSeriesD3Minimum", "NSeriesD3Positive", "NSeriesD3RootEnumeration", "NSeriesD3SineComparison", "NSeriesD3Witness", "NSeriesE10IntrinsicAcceleration", "NSeriesE1AcceleratedLimit", "NSeriesE2ThreeScale", "NSeriesE3ThreeScaleSharp", "NSeriesE4Trisection", "NSeriesE5GeneralTwoScale", "NSeriesE6GeneralMoment", "NSeriesE7Vandermonde", "NSeriesE8WeightsExist", "NSeriesE9LagrangeWeights"]
+roots = ["NSeries", "NSeriesAlgebra", "NSeriesB5ActualBound", "NSeriesB6", "NSeriesC2Final", "NSeriesD1", "NSeriesD2BChord", "NSeriesD2BClosing", "NSeriesD2BPrimitive", "NSeriesD2Geometry", "NSeriesD3ChordComparison", "NSeriesD3ChordPowers", "NSeriesD3Foundation", "NSeriesD3Limit", "NSeriesD3Minimum", "NSeriesD3Positive", "NSeriesD3RootEnumeration", "NSeriesD3SineComparison", "NSeriesD3Witness", "NSeriesE10IntrinsicAcceleration", "NSeriesE1AcceleratedLimit", "NSeriesE2ThreeScale", "NSeriesE3ThreeScaleSharp", "NSeriesE4Trisection", "NSeriesE5GeneralTwoScale", "NSeriesE6GeneralMoment", "NSeriesE7Vandermonde", "NSeriesE8WeightsExist", "NSeriesE9LagrangeWeights", "NSeriesSeedCubicBounds", "NSeriesCubicIteration", "NSeriesLadderTableau", "NSeriesGeometricSchedule", "NSeriesRefinementSchedule", "NSeriesCanonicalLadder", "NSeriesCanonicalTableau"]
 
 [[lean_lib]]
 name = "NSeriesAudit"
